@@ -155,58 +155,62 @@
       ]
     }
   ],
-  "ui": [
-    {
-      "section": "Grafana",
-      "fields": [
-        {
-          "key": "grafanaUrl",
-          "label": "Grafana URL",
-          "type": "text",
-          "description": "Grafana instance URL",
-          "required": false,
-          "defaultValue": "http://localhost:3000"
-        },
-        {
-          "key": "grafanaApiKey",
-          "label": "API Key",
-          "type": "secret",
-          "description": "Grafana API key or service account token"
-        }
-      ]
-    },
-    {
-      "section": "Datadog",
-      "fields": [
-        {
-          "key": "datadogApiKey",
-          "label": "API Key",
-          "type": "secret",
-          "description": "Datadog API key"
-        },
-        {
-          "key": "datadogAppKey",
-          "label": "Application Key",
-          "type": "secret",
-          "description": "Datadog application key"
-        },
-        {
-          "key": "datadogSite",
-          "label": "Site",
-          "type": "text",
-          "description": "Datadog site (e.g. datadoghq.com, datadoghq.eu)",
-          "required": false,
-          "defaultValue": "datadoghq.com"
-        }
-      ]
-    }
-  ],
+  "ui": {
+    "settings": [
+      {
+        "section": "Grafana",
+        "fields": [
+          {
+            "key": "grafanaUrl",
+            "label": "Grafana URL",
+            "type": "text",
+            "description": "Grafana instance URL",
+            "required": false,
+            "defaultValue": "http://localhost:3000"
+          },
+          {
+            "key": "grafanaApiKey",
+            "label": "API Key",
+            "type": "secret",
+            "description": "Grafana API key or service account token"
+          }
+        ]
+      },
+      {
+        "section": "Datadog",
+        "fields": [
+          {
+            "key": "datadogApiKey",
+            "label": "API Key",
+            "type": "secret",
+            "description": "Datadog API key"
+          },
+          {
+            "key": "datadogAppKey",
+            "label": "Application Key",
+            "type": "secret",
+            "description": "Datadog application key"
+          },
+          {
+            "key": "datadogSite",
+            "label": "Site",
+            "type": "text",
+            "description": "Datadog site (e.g. datadoghq.com, datadoghq.eu)",
+            "required": false,
+            "defaultValue": "datadoghq.com"
+          }
+        ]
+      }
+    ]
+  },
   "dependencies": {},
   "peerDependencies": {
     "cortex": ">=1.0.0"
   },
   "aiDisclosure": {
-    "tools": ["Claude Code (Anthropic)"],
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
     "humanReview": true
   }
 }
