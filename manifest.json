@@ -1,0 +1,212 @@
+{
+  "name": "cortex-plugin-grafana",
+  "version": "1.0.0",
+  "description": "Query Grafana and Datadog metrics, create dashboards, and analyze incidents",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-grafana",
+  "homepage": "",
+  "capabilities": [
+    "tools",
+    "network:fetch"
+  ],
+  "tools": [
+    {
+      "name": "grafana_query_metrics",
+      "description": "Query metrics from a Grafana datasource",
+      "params": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "PromQL or datasource-specific query string",
+          "required": true
+        },
+        {
+          "name": "datasource",
+          "type": "string",
+          "description": "Grafana datasource name or UID",
+          "required": true
+        },
+        {
+          "name": "time_range",
+          "type": "string",
+          "description": "Time range for the query (e.g. 1h, 6h, 24h)",
+          "required": false,
+          "defaultValue": "1h"
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "description": "Query resolution step (e.g. 1m, 5m, 15m)",
+          "required": false,
+          "defaultValue": "1m"
+        }
+      ]
+    },
+    {
+      "name": "grafana_list_dashboards",
+      "description": "List available Grafana dashboards",
+      "params": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Search query to filter dashboard names",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "grafana_get_dashboard",
+      "description": "Get the full JSON definition of a Grafana dashboard",
+      "params": [
+        {
+          "name": "dashboard_uid",
+          "type": "string",
+          "description": "Dashboard UID",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "grafana_create_alert",
+      "description": "Create a Grafana alert rule on a metric",
+      "params": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Alert rule name",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Metric query to evaluate",
+          "required": true
+        },
+        {
+          "name": "condition",
+          "type": "string",
+          "description": "Alert condition (e.g. 'gt 90' for greater than 90)",
+          "required": true
+        },
+        {
+          "name": "datasource",
+          "type": "string",
+          "description": "Grafana datasource name or UID",
+          "required": true
+        },
+        {
+          "name": "notification_channel",
+          "type": "string",
+          "description": "Notification channel name or UID",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "grafana_analyze_incident",
+      "description": "Analyze a metric spike for incident investigation",
+      "params": [
+        {
+          "name": "metric",
+          "type": "string",
+          "description": "Metric name to analyze",
+          "required": true
+        },
+        {
+          "name": "time_range",
+          "type": "string",
+          "description": "Time range around the incident",
+          "required": true
+        },
+        {
+          "name": "datasource",
+          "type": "string",
+          "description": "Grafana datasource name or UID",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "datadog_query",
+      "description": "Query Datadog metrics directly",
+      "params": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Datadog metrics query string",
+          "required": true
+        },
+        {
+          "name": "from_ts",
+          "type": "string",
+          "description": "Start time as UNIX seconds",
+          "required": false
+        },
+        {
+          "name": "to_ts",
+          "type": "string",
+          "description": "End time as UNIX seconds",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "ui": [
+    {
+      "section": "Grafana",
+      "fields": [
+        {
+          "key": "grafanaUrl",
+          "label": "Grafana URL",
+          "type": "text",
+          "description": "Grafana instance URL",
+          "required": false,
+          "defaultValue": "http://localhost:3000"
+        },
+        {
+          "key": "grafanaApiKey",
+          "label": "API Key",
+          "type": "secret",
+          "description": "Grafana API key or service account token"
+        }
+      ]
+    },
+    {
+      "section": "Datadog",
+      "fields": [
+        {
+          "key": "datadogApiKey",
+          "label": "API Key",
+          "type": "secret",
+          "description": "Datadog API key"
+        },
+        {
+          "key": "datadogAppKey",
+          "label": "Application Key",
+          "type": "secret",
+          "description": "Datadog application key"
+        },
+        {
+          "key": "datadogSite",
+          "label": "Site",
+          "type": "text",
+          "description": "Datadog site (e.g. datadoghq.com, datadoghq.eu)",
+          "required": false,
+          "defaultValue": "datadoghq.com"
+        }
+      ]
+    }
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "aiDisclosure": {
+    "tools": ["Claude Code (Anthropic)"],
+    "humanReview": true
+  }
+}
