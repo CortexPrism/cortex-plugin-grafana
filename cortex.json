@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-grafana",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Query Grafana and Datadog metrics, create dashboards, and analyze incidents",
   "kind": "esm",
   "entryPoint": "mod.ts",

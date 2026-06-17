@@ -1,13 +1,15 @@
 # Changelog
 
-## [Unreleased]
+## [1.0.1] — 2026-06-17
 
 ### Added
+
 - Initial project setup
 
 ## [1.0.0] — 2026-06-15
 
 ### Added
+
 - Initial release of cortex-plugin-grafana
 - `grafana_query_metrics` — Query metrics from Grafana datasources
 - `grafana_list_dashboards` — List available dashboards
