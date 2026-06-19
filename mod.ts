@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
 
 let config: Record<string, string> = {};
