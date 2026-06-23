@@ -1,5 +1,5 @@
 // deno-lint-ignore-file
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 let config: Record<string, string> = {};
 
@@ -92,7 +92,7 @@ const grafanaQueryMetricsTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const query = String(args.query || '');
@@ -194,7 +194,7 @@ const grafanaListDashboardsTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       let url = `${config.grafanaUrl || 'http://localhost:3000'}/api/search?type=dash-db`;
@@ -238,7 +238,7 @@ const grafanaGetDashboardTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const uid = String(args.dashboard_uid || '');
@@ -310,7 +310,7 @@ const grafanaCreateAlertTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const name = String(args.name || '');
@@ -445,7 +445,7 @@ const grafanaAnalyzeIncidentTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const metric = String(args.metric || '');
@@ -574,7 +574,7 @@ const datadogQueryTool: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const query = String(args.query || '');

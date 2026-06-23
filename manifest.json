@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-grafana",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Query Grafana and Datadog metrics, create dashboards, and analyze incidents",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -35,14 +35,14 @@
           "type": "string",
           "description": "Time range for the query (e.g. 1h, 6h, 24h)",
           "required": false,
-          "default": "1h"
+          "defaultValue": "1h"
         },
         {
           "name": "step",
           "type": "string",
           "description": "Query resolution step (e.g. 1m, 5m, 15m)",
           "required": false,
-          "default": "1m"
+          "defaultValue": "1m"
         }
       ]
     },
@@ -166,7 +166,7 @@
             "type": "text",
             "description": "Grafana instance URL",
             "required": false,
-            "default": "http://localhost:3000"
+            "defaultValue": "http://localhost:3000"
           },
           {
             "key": "grafanaApiKey",
@@ -197,7 +197,7 @@
             "type": "text",
             "description": "Datadog site (e.g. datadoghq.com, datadoghq.eu)",
             "required": false,
-            "default": "datadoghq.com"
+            "defaultValue": "datadoghq.com"
           }
         ]
       }
@@ -205,7 +205,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
